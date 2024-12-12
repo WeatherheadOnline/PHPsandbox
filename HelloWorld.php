@@ -100,39 +100,14 @@
     $subject = $_POST['subject'];
     $message = $_POST['message'];
     
-    $headers = 'From: Eddie@WeatherheadOnline.com' . "\r\n";
-    //     'Reply-To: weatherheadonline@gmail.com' . "\r\n" .
-    //     'X-Mailer: PHP/' . phpversion();
-        // 'Content-type: text/html\r\n';
+    $headers = 'From: Eddie@WeatherheadOnline.com' . "\r\n" .
+        'Reply-To: weatherheadonline@gmail.com' . "\r\n" .
+        'Content-type: text/html' . "\r\n";
 
     mail($to, $subject, $message, $headers);
-    // mail($to, $subject, $message);
 ?>
 
 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

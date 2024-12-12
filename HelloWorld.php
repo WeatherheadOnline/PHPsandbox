@@ -68,18 +68,26 @@
             <label for="hi" class="checkbox"><input type="checkbox" id="hi" name="concern">Just saying hi</label>
         </fieldset>
         <fieldset>
+            <h2 style="color: red; background-color: white;">Refresh page before sending</h2>
+            <label for="userName" class="labelText">
+                How may I address you? 
+                <input type="text" id="userName" class="inputText" name="userName" required 
+                    value="<?php echo isset($_POST['userName']) ? $_POST['userName'] : "" ?>">
+            </label>
             <label for="returnAddress" class="labelText">
-                Your email address: 
-                <input type="email" id="returnAddress" class="inputText" name="email" value="<?php echo $_GET['email'] ?>" required>
+                What's your email address? 
+                <input type="email" id="returnAddress" class="inputText" name="userEmail" required 
+                    value="<?php echo isset($_POST['userEmail']) ? $_POST['userEmail'] : "" ?>">
             </label>
             <label for="subject" class="labelText">
                 Subject: 
-                <input type="text" id="messageSubject"  class="inputText" name="subject" value="<?php echo $_GET['subject'] ?>" >
+                <input type="text" id="messageSubject" class="inputText" name="subject" 
+                    placeholder="<?php echo isset($_POST['subject']) ? $_POST['subject'] : "(optional)" ?>" >
             </label>
             <div class="flexbox">
                 <label for="body" class="labelText">
                     Type your message here: 
-                    <textarea id="messageBody" class="inputText" name="message" rows="4" cols="60" value="<?php echo $_GET['message'] ?>" required ></textarea>
+                    <textarea id="messageBody" class="inputText" name="message" rows="4" cols="60" required ><?php echo $_POST['message'] ?></textarea>
                 </label>
                 <button type="submit" id="submitEmail">Send message</button>
             </div>
@@ -90,24 +98,26 @@
 <?php
 
     if (!empty($_POST)) {
-        echo "You entered an email address of " . $_POST['email'] . ",<br>";
+        echo "You entered an email address of " . $_POST['userEmail'] . ",<br>";
         echo 'your email will have a subject line that says "' . $_POST['subject'] . '", ' . "<br>";
         echo 'and your email will say "' . $_POST['message'] . '".' . "<br>";
-    
+        echo 'It\'s from ' . $_POST['userName']; 
     }
+    // $userName = $_POST['userName'];
 
     $to = 'weatherheadonline@gmail.com';
-    $subject = $_POST['subject'];
+    $subject = isset($_POST['subject']) ? $_POST['subject'] : 'New message from contact form';
+        // $subject = !isset($_POST['subject']) ? 'New message from contact form' : $_POST['subject'];
+        // $subject = "New message from contact form";
     $message = $_POST['message'];
     
-    $headers = 'From: Eddie@WeatherheadOnline.com' . "\r\n" .
+    $headers = 'From: ' . $_POST['userEmail'] . "\r\n" .
         'Reply-To: weatherheadonline@gmail.com' . "\r\n" .
         'Content-type: text/html' . "\r\n";
 
     mail($to, $subject, $message, $headers);
+
 ?>
-
-
 
 </body>
 </html>

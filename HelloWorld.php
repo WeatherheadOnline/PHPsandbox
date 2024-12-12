@@ -97,18 +97,42 @@
     }
 
     $to = 'weatherheadonline@gmail.com';
-    // $subject = 'This is a test.';
-    // $message = 'This email is addressed to weatherheadonline@gmail.com, from circlespiralstring@gmail.com.';
     $subject = $_POST['subject'];
     $message = $_POST['message'];
     
-    // $headers = "From: CircleSpiralString <circlespiralstring@gmail.com>\r\n";
-    // $headers .= "Reply-To: eddie.weatherhead@gmail.com\r\n";
-    // $headers .= "Content-type: text/html\r\n";
+    $headers = 'From: Eddie@WeatherheadOnline.com' . "\r\n";
+    //     'Reply-To: weatherheadonline@gmail.com' . "\r\n" .
+    //     'X-Mailer: PHP/' . phpversion();
+        // 'Content-type: text/html\r\n';
 
-    // mail($to, $subject, $message, $headers);
-    mail($to, $subject, $message);
+    mail($to, $subject, $message, $headers);
+    // mail($to, $subject, $message);
 ?>
+
+
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

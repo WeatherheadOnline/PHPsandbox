@@ -82,7 +82,8 @@
             <label for="subject" class="labelText">
                 Subject: 
                 <input type="text" id="messageSubject" class="inputText" name="subject" 
-                    placeholder="<?php echo isset($_POST['subject']) ? $_POST['subject'] : "(optional)" ?>" >
+                    placeholder ="<?php echo isset($_POST['subject']) ? "" : "(optional)" ?>" 
+                    value = "<?php echo isset($_POST['subject']) ? $_POST['subject'] : "" ?>" >
             </label>
             <div class="flexbox">
                 <label for="body" class="labelText">
@@ -97,20 +98,12 @@
 
 <?php
 
-    if (!empty($_POST)) {
-        echo "You entered an email address of " . $_POST['userEmail'] . ",<br>";
-        echo 'your email will have a subject line that says "' . $_POST['subject'] . '", ' . "<br>";
-        echo 'and your email will say "' . $_POST['message'] . '".' . "<br>";
-        echo 'It\'s from ' . $_POST['userName']; 
-    }
-    // $userName = $_POST['userName'];
-
     $to = 'weatherheadonline@gmail.com';
-    $subject = isset($_POST['subject']) ? $_POST['subject'] : 'New message from contact form';
-        // $subject = !isset($_POST['subject']) ? 'New message from contact form' : $_POST['subject'];
-        // $subject = "New message from contact form";
-    $message = $_POST['message'];
-    
+
+    $subject = empty($_POST['subject']) ? "New message from contact form" : $_POST['subject'];
+
+    $message = $_POST['message'] . "<br><br><em>Sent by " . $_POST['userName'] . "</em>";
+
     $headers = 'From: ' . $_POST['userEmail'] . "\r\n" .
         'Reply-To: weatherheadonline@gmail.com' . "\r\n" .
         'Content-type: text/html' . "\r\n";

@@ -1,0 +1,75 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #61e9e9A1;
+}
+form {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 800px;
+    min-width: 400px;
+}
+fieldset {
+    margin: 1em 0;
+    padding: 1em 0;
+}
+label {display: block;}
+.inputText, label {
+    display: block;
+    width: 60vw;
+    min-width: 380px;
+    max-width: 750px;
+    margin: 0.5em auto;
+}
+#nameAndEmail  {
+    width: 60vw;
+    min-width: 380px;
+    max-width: 750px;
+    margin: 0 auto;
+    display: grid;
+    gap: 8%;
+    grid-template-columns: 46% 46%;
+    justify-content: space-between;
+}
+#nameAndEmail input {width: 100%;}
+@media screen and (any-hover: hover) and (max-width: 900px) {
+    #nameAndEmail {
+        display: block;
+    }
+}
+#buttonsContainer {
+    width: 60vw;
+    min-width: 380px;
+    max-width: 750px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#messageSent {
+    min-width: max-content;
+    margin: 0;
+    padding: 0.3rem 0.5rem;
+    background-color: #FFFFFF;
+}
+#formButtons {
+    display: flex;
+    justify-content: right;
+}
+#formbuttons button {
+    min-width: max-content;
+    padding: 0.3rem 0.5rem;
+    margin-left: 0.5rem;
+}
+#disclaimer {
+    font-size: 0.8em;
+    font-style: italic;
+    width: 60vw;
+    min-width: 300px;
+    max-width: 750px;
+    margin: auto;
+}

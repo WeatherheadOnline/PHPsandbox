@@ -29,15 +29,16 @@
             margin: 0.5em auto;
         }
         #nameAndEmail  {
-            display: grid;
-            gap: 10%;
             width: 60vw;
             min-width: 380px;
             max-width: 750px;
             margin: 0 auto;
-            grid-template-columns: 40% 50%;
+            display: grid;
+            gap: 10%;
+            grid-template-columns: 45% 45%;
             justify-content: space-between;
         }
+        #nameAndEmail input {width: 100%;}
         #formButtons {
             display: flex;
             justify-content: right;
@@ -50,7 +51,6 @@
             padding: 0.3rem;
             margin: 0.5rem;
         }
-        #submitEmail {height: min-content;}
         .small {font-size: 0.8em;}
         .italic {
             font-style: italic;
@@ -62,9 +62,8 @@
     </style>
 </head>
 <body>
-    
     <form method="POST">
-
+        
         <fieldset>
             <legend> <span class="bold">~(Optional)~ </span> What would you like to chat about? </legend>
             <label for="new" class="radio">
@@ -80,7 +79,7 @@
             <label for="hi" class="radio">
                 <input type="radio" id="hi" name="concern" value="hi">Just saying hi</label>
         </fieldset>
-
+        
         <fieldset>
             <div id="nameAndEmail">  
                 <div id="userNameWrapper">
@@ -126,10 +125,10 @@
         document.getElementById("messageSubject").value = "";
         document.getElementById("messageBody").innerText = "";
     }
+
 </script>
 
 <?php
-
     if (isset ($_POST['concern'])) {
         switch ($_POST['concern']) {
             case 'new':

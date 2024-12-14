@@ -44,17 +44,31 @@
                 display: block;
             }
         }
-        #formButtons {
-            display: flex;
-            justify-content: right;
+        #buttonsContainer {
             width: 60vw;
             min-width: 380px;
             max-width: 750px;
-            margin: auto;
+            margin: 0.5rem auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        #messageSent {
+            background-color: white;
+            outline: 1px solid black;
+            padding: 0.3rem;
+            margin: 0.5rem;
+            min-width: max-content;
+            visibility: hidden;
+        }
+        #formButtons {
+            display: flex;
+            justify-content: right;
         }
         #formbuttons button {
             padding: 0.3rem;
             margin: 0.5rem;
+            min-width: max-content;
         }
         .small {font-size: 0.8em;}
         .italic {
@@ -112,27 +126,27 @@
                 Type your message here: 
                 <textarea id="messageBody" class="inputText" name="message" rows="4" cols="60" required ><?php echo $_POST['message'] ?></textarea>
             </label>
-            <div id="formButtons">
-                <button type="" id="clearForm">Clear the form</button>
-                <button type="submit" id="submitEmail">Send message</button>
+            <div id="buttonsContainer">
+                <p id="messageSent">
+                    <?php 
+                    
+                    if (isset ($_POST['subject']) ) {
+                        echo "Your message was sent. Thanks!";
+                    }
+
+                    ?>
+                </p>
+                
+                
+                <div id="formButtons">
+                    <button type="" id="clearForm">Clear the form</button>
+                    <button type="submit" id="submitEmail">Send message</button>
+                </div>
             </div>
             <p class="small italic">I won't share your email address with anyone, and I won't use it for any purpose other than replying to the message you're sending me here. By sending me a message here, you're implicitly giving me the "ok" to reply to you at this email address.</p>
         </fieldset>
     </form>
     
-<script>
-    const button = document.getElementById("clearForm");
-    button.addEventListener("click", clearForm);
-
-    function clearForm() {
-        document.getElementById("userName").value = "";
-        document.getElementById("returnAddress").value = "";
-        document.getElementById("messageSubject").value = "";
-        document.getElementById("messageBody").innerText = "";
-    }
-
-</script>
-
 <?php
     if (isset ($_POST['concern'])) {
         switch ($_POST['concern']) {
@@ -176,8 +190,29 @@
         // 'BCC: eddie.weatherhead@gmail.com' . "\r\n";   // in production, change this to WO@g.com & change "to" and "reply-to" to e@WO.com
 
     $to = 'Eddie <weatherheadonline@gmail.com>';
-    mail($to, $subject, $message, $headers);
+    
+    // mail($to, $subject, $message, $headers);
 ?>
+
+<script>
+    const clear = document.getElementById("clearForm");
+    clear.addEventListener("click", clearForm);
+
+    function clearForm() {
+        document.getElementById("userName").value = "";
+        document.getElementById("returnAddress").value = "";
+        document.getElementById("messageSubject").value = "";
+        document.getElementById("messageBody").innerText = "";
+    }
+
+    const send = document.getElementById("submitEmail");
+    const messageSent = document.getElementById("messageSent");
+    send.addEventListener("click", message);
+    
+    function message() {
+        messageSent.style.visibility = "visible";
+    }
+</script>
 
 </body>
 </html>

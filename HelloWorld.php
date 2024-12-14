@@ -1,84 +1,6 @@
 <html>
 <head>
-    <style>
-        body {
-            height: 100vh;
-            width: 100vw;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-            background-color: #61e9e9A1;
-        }
-        form {
-            width: 80%;
-            margin: 0 auto;
-            max-width: 800px;
-            min-width: 400px;
-        }
-        fieldset {
-            margin: 1em 0;
-            padding: 1em 0;
-        }
-        label {display: block;}
-        .inputText, label {
-            display: block;
-            width: 60vw;
-            min-width: 380px;
-            max-width: 750px;
-            margin: 0.5em auto;
-        }
-        #nameAndEmail  {
-            width: 60vw;
-            min-width: 380px;
-            max-width: 750px;
-            margin: 0 auto;
-            display: grid;
-            gap: 8%;
-            grid-template-columns: 46% 46%;
-            justify-content: space-between;
-        }
-        #nameAndEmail input {width: 100%;}
-        @media screen and (any-hover: hover) and (max-width: 900px) {
-            #nameAndEmail {
-                display: block;
-            }
-        }
-        #buttonsContainer {
-            width: 60vw;
-            min-width: 380px;
-            max-width: 750px;
-            margin: 0.5rem auto;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        #messageSent {
-            background-color: white;
-            outline: 1px solid black;
-            padding: 0.3rem;
-            margin: 0.5rem;
-            min-width: max-content;
-            visibility: hidden;
-        }
-        #formButtons {
-            display: flex;
-            justify-content: right;
-        }
-        #formbuttons button {
-            padding: 0.3rem;
-            margin: 0.5rem;
-            min-width: max-content;
-        }
-        .small {font-size: 0.8em;}
-        .italic {
-            font-style: italic;
-            width: 60vw;
-            min-width: 300px;
-            max-width: 750px;
-            margin: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="HelloWorld.css">
 </head>
 <body>
     <form method="POST">
@@ -127,23 +49,14 @@
                 <textarea id="messageBody" class="inputText" name="message" rows="4" cols="60" required ><?php echo $_POST['message'] ?></textarea>
             </label>
             <div id="buttonsContainer">
-                <p id="messageSent">
-                    <?php 
-                    
-                    if (isset ($_POST['subject']) ) {
-                        echo "Your message was sent. Thanks!";
-                    }
-
-                    ?>
-                </p>
-                
-                
+                <?php  if (isset ($_POST['subject']) ) {echo "<p id='messageSent'>Your message was sent. Thanks!</p>";} ?>
+                <p></p>  <!-- placeholder for flexbox -->
                 <div id="formButtons">
                     <button type="" id="clearForm">Clear the form</button>
                     <button type="submit" id="submitEmail">Send message</button>
                 </div>
             </div>
-            <p class="small italic">I won't share your email address with anyone, and I won't use it for any purpose other than replying to the message you're sending me here. By sending me a message here, you're implicitly giving me the "ok" to reply to you at this email address.</p>
+            <p id="disclaimer">I won't share your email address with anyone, and I won't use it for any purpose other than replying to the message you're sending me here. By sending me a message here, you're implicitly giving me the "ok" to reply to you at this email address.</p>
         </fieldset>
     </form>
     
@@ -203,14 +116,6 @@
         document.getElementById("returnAddress").value = "";
         document.getElementById("messageSubject").value = "";
         document.getElementById("messageBody").innerText = "";
-    }
-
-    const send = document.getElementById("submitEmail");
-    const messageSent = document.getElementById("messageSent");
-    send.addEventListener("click", message);
-    
-    function message() {
-        messageSent.style.visibility = "visible";
     }
 </script>
 

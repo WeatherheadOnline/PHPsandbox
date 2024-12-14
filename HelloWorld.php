@@ -34,11 +34,16 @@
             max-width: 750px;
             margin: 0 auto;
             display: grid;
-            gap: 10%;
-            grid-template-columns: 45% 45%;
+            gap: 8%;
+            grid-template-columns: 46% 46%;
             justify-content: space-between;
         }
         #nameAndEmail input {width: 100%;}
+        @media screen and (any-hover: hover) and (max-width: 900px) {
+            #nameAndEmail {
+                display: block;
+            }
+        }
         #formButtons {
             display: flex;
             justify-content: right;

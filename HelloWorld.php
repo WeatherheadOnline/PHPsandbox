@@ -56,8 +56,22 @@
     </style>
 </head>
 <body>
+    
     <form method="POST">
         <fieldset>
+            <!--<legend> <span class="bold">~(Optional)~ </span> What would you like to chat about? </legend>-->
+            <!--<label for="new" class="checkbox">-->
+            <!--    <input type="checkbox" id="new" name="concern" value="newProject">Let's talk about a new project</label>-->
+            <!--<label for="existing" class="checkbox">-->
+            <!--    <input type="checkbox" id="existing" name="concern" value="existingProject">Let's discuss a project we're already working on together</label>-->
+            <!--<label for="dev" class="checkbox">-->
+            <!--    <input type="checkbox" id="dev" name="concern" value="dev">I'm a developer and I have a question</label>-->
+            <!--<label for="general" class="checkbox">-->
+            <!--    <input type="checkbox" id="general" name="concern" value="general">I have a more general inquiry</label>-->
+            <!--<label for="other" class="checkbox">-->
+            <!--    <input type="checkbox" id="other" name="concern" value="other">Something else</label>-->
+            <!--<label for="hi" class="checkbox">-->
+            <!--    <input type="checkbox" id="hi" name="concern" value="hi">Just saying hi</label>-->
             <legend> <span class="bold">~(Optional)~ </span> What would you like to chat about? </legend>
             <label for="new" class="radio">
                 <input type="radio" id="new" name="concern" value="new">Let's talk about a new project</label>
@@ -71,8 +85,8 @@
                 <input type="radio" id="other" name="concern" value="other">Something else</label>
             <label for="hi" class="radio">
                 <input type="radio" id="hi" name="concern" value="hi">Just saying hi</label>
-        </fieldset>
 
+        </fieldset>
         <fieldset>
             <h2 style="color: red; background-color: white;">Refresh page before sending</h2>
             <label for="userName" class="labelText">
@@ -99,6 +113,7 @@
                 <button type="submit" id="submitEmail">Send message</button>
             </div>
             <p class="small italic">I won't share your email address with anyone, and I won't use it for any purpose other than replying to the message you're sending me here. By sending me a message here, you're implicitly giving me the "ok" to reply to you at this email address.</p>
+            
         </fieldset>
     </form>
 

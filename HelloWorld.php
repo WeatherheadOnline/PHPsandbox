@@ -116,6 +116,7 @@
         document.getElementById("returnAddress").value = "";
         document.getElementById("messageSubject").value = "";
         document.getElementById("messageBody").innerText = "";
+        document.getElementById("messageSent").remove();
     }
 </script>
 

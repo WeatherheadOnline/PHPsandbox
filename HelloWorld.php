@@ -86,6 +86,21 @@
         }
     }
 
+////  Start by sanitizing the data entered by the user  ////
+
+    $name = dataFilter($_POST['name']);
+    $email = dataFilter($_POST['email']); 
+    $subject = dataFilter($_POST['subject']); 
+    $message = dataFilter($_POST['message']); 
+
+    function dataFilter($data) {
+        $data = trim($data);  //  to strip unnecessary whitespace
+        $data = stripslashes($data);  // remove any backslashes that may have been entered
+        $data = htmlspecialchars($data);  // converts any special characters to their HTML escaped equivalent to prevent code injection attacks
+    }
+
+////  Then use the sanitized data  ////
+
     date_default_timezone_set("America/Denver");
     
     $subject = empty($_POST['subject']) 
